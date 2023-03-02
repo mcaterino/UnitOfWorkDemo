@@ -18,7 +18,7 @@ namespace Services
             _unitOfwork = unitOfwork;
         }
 
-        public async Task<bool> CreateProduct(ProductDetails productDetails)
+        public async Task<bool> AddProductAsync(ProductDetails productDetails)
         {
             if (productDetails != null)
             {
@@ -35,7 +35,7 @@ namespace Services
             return false;
         }
 
-        public async Task<bool> DeleteProduct(int id)
+        public async Task<bool> DeleteProductAsync(int id)
         {
             if (id > 0)
             {
@@ -55,13 +55,13 @@ namespace Services
             return false;
         }
 
-        public async Task<IEnumerable<ProductDetails>> GetAllProducts()
+        public async Task<IEnumerable<ProductDetails>> GetAllProductsAsync()
         {
             var products = await _unitOfwork.Product.GetAllAsync();
             return products;
         }
 
-        public async Task<ProductDetails?> GetProductById(int id)
+        public async Task<ProductDetails?> GetProductByIdAsync(int id)
         {
             if (id > 0)
             {
@@ -74,7 +74,7 @@ namespace Services
             return null;
         }
 
-        public async Task<bool> UpdateProduct(ProductDetails productDetails)
+        public async Task<bool> UpdateProductAsync(ProductDetails productDetails)
         {
             var product = await _unitOfwork.Product.GetByIdAsync(productDetails.Id);
             if (product != null)
