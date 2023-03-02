@@ -1,6 +1,7 @@
 using Services.Interfaces;
 using Infrastructure.ServiceExtension;
 using Services;
+using UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,5 +28,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+AppDbInitializer.Seed(app);
 
 app.Run();
